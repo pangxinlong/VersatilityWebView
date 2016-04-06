@@ -20,22 +20,20 @@ import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
 
-    //    VersatilityWebView versatilityWebView;
-    RelativeLayout mView;
+    RelativeLayout rootView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mView = (RelativeLayout) LayoutInflater.from(this)
-                .inflate(R.layout.activity_main, null, false);
-//        versatilityWebView=(VersatilityWebView)findViewById(R.id.webView);
+        rootView = (RelativeLayout) findViewById(R.id.rootView);
         initView();
     }
 
@@ -45,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         versatilityWebView.setWebChromeClientListener(new WebChromeClientListener() {
             @Override
             public void onFileChooser(ValueCallback<Uri> uploadMsg, String acceptType) {
-                openCustomFileChooser();
+//                openCustomFileChooser();
             }
 
             @Override
@@ -79,54 +77,53 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageFinished(WebView view, String url) {
-
             }
         });
 
+        rootView.addView(versatilityWebView);
         versatilityWebView.setCache("test");
         versatilityWebView.setDatabase("test");
         versatilityWebView.loadUrl("https://www.baidu.com");
-        mView.addView(versatilityWebView);
     }
 
-    private Uri mCapturedImageURI = null;
-
-    public static final int FILECHOOSER_RESULTCODE = 2888;
-
-    public void openCustomFileChooser() {
-        try {
-            // Create AndroidExampleFolder at sdcard
-            File imageStorageDir = new File(
-                    Environment.getExternalStoragePublicDirectory(
-                            Environment.DIRECTORY_PICTURES)
-                    , "jhss");
-            if (!imageStorageDir.exists()) {
-                // Create AndroidExampleFolder at sdcard
-                imageStorageDir.mkdirs();
-            }
-            // Create camera captured image file path and name
-            File file = new File(
-                    imageStorageDir + File.separator + "IMG_"
-                            + String.valueOf(System.currentTimeMillis())
-                            + ".jpg");
-            mCapturedImageURI = Uri.fromFile(file);
-            // Camera capture image intent
-            final Intent captureIntent = new Intent(
-                    MediaStore.ACTION_IMAGE_CAPTURE);
-            captureIntent.putExtra(MediaStore.EXTRA_OUTPUT, mCapturedImageURI);
-            Intent i = new Intent(Intent.ACTION_GET_CONTENT);
-            i.addCategory(Intent.CATEGORY_OPENABLE);
-            i.setType("image/*");
-            // Create file chooser intent
-            Intent chooserIntent = Intent.createChooser(i, "上传身份证照");
-            // Set camera intent to file chooser
-            chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS,
-                    new Parcelable[]{captureIntent});
-            // On select image call onActivityResult method of activity
-            startActivityForResult(chooserIntent, FILECHOOSER_RESULTCODE);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    private Uri mCapturedImageURI = null;
+//
+//    public static final int FILECHOOSER_RESULTCODE = 2888;
+//
+//    public void openCustomFileChooser() {
+//        try {
+//            // Create AndroidExampleFolder at sdcard
+//            File imageStorageDir = new File(
+//                    Environment.getExternalStoragePublicDirectory(
+//                            Environment.DIRECTORY_PICTURES)
+//                    , "jhss");
+//            if (!imageStorageDir.exists()) {
+//                // Create AndroidExampleFolder at sdcard
+//                imageStorageDir.mkdirs();
+//            }
+//            // Create camera captured image file path and name
+//            File file = new File(
+//                    imageStorageDir + File.separator + "IMG_"
+//                            + String.valueOf(System.currentTimeMillis())
+//                            + ".jpg");
+//            mCapturedImageURI = Uri.fromFile(file);
+//            // Camera capture image intent
+//            final Intent captureIntent = new Intent(
+//                    MediaStore.ACTION_IMAGE_CAPTURE);
+//            captureIntent.putExtra(MediaStore.EXTRA_OUTPUT, mCapturedImageURI);
+//            Intent i = new Intent(Intent.ACTION_GET_CONTENT);
+//            i.addCategory(Intent.CATEGORY_OPENABLE);
+//            i.setType("image/*");
+//            // Create file chooser intent
+//            Intent chooserIntent = Intent.createChooser(i, "上传身份证照");
+//            // Set camera intent to file chooser
+//            chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS,
+//                    new Parcelable[]{captureIntent});
+//            // On select image call onActivityResult method of activity
+//            startActivityForResult(chooserIntent, FILECHOOSER_RESULTCODE);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 }
