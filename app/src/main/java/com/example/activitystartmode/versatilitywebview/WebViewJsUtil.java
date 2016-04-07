@@ -13,17 +13,11 @@ public class WebViewJsUtil {
 
     private Context mContext;
 
-    public WebViewJsUtil(Context context, WebView webView, String jSInterfaceName) {
+    public WebViewJsUtil(Context context, WebView webView) {
         mContext = context;
         mWebView = webView;
-        init(jSInterfaceName);
     }
 
-    private void init(String jSInterfaceName) {
-        mWebView.getSettings().setJavaScriptEnabled(true);
-        mWebView.addJavascriptInterface(mContext, jSInterfaceName);
-
-    }
 
 
     /**
@@ -48,6 +42,30 @@ public class WebViewJsUtil {
                 }
             }
             jsBuffer.append("javascript: ").append(funName + "(" + jsParams + ");");
+            try {
+                mWebView.loadUrl(jsBuffer.toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * java层调用js
+     * @param callFun 调用方式
+     * @param method  调用方法
+     * @param jsonStr json串
+     */
+    public synchronized void callJavascript(String callFun,String method, String jsonStr) {
+        if (method != null && method.length() != 0 && mWebView != null) {
+            StringBuffer jsBuffer = new StringBuffer();
+            jsBuffer.append("javascript: ");
+//            jsBuffer.append("window.trigger");
+            jsBuffer.append(callFun);
+            jsBuffer.append("(");
+            jsBuffer.append("'" + method + "'");
+            jsBuffer.append("," + jsonStr + "");
+            jsBuffer.append(")");
             try {
                 mWebView.loadUrl(jsBuffer.toString());
             } catch (Exception e) {
