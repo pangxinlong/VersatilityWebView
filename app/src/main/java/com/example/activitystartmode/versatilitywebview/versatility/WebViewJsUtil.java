@@ -1,4 +1,4 @@
-package com.example.activitystartmode.versatilitywebview;
+package com.example.activitystartmode.versatilitywebview.versatility;
 
 import android.content.Context;
 import android.webkit.WebView;

@@ -20,15 +20,16 @@ public class OpenFileChooser {
 
     public static final int FILECHOOSER_REQUESTCODE = 2888;
 
-    private int mRequestCode;
+    private int mRequestCode = FILECHOOSER_REQUESTCODE;
 
-    private String mDirName;//文件路径
+    private static final String DEFAULT_FILE_NAME = "default_file_name";
+
+    private String mDirName = DEFAULT_FILE_NAME;//文件路径
 
     private ValueCallback<Uri> mUploadMessage;//Android 3.0+
 
     private ValueCallback<Uri[]> mUploadMessageL;//Android <3.0
 
-    private static final String DEFAULT_FILE_NAME = "defautl_file_name";
 
     private Activity mActivity;
 
@@ -40,13 +41,12 @@ public class OpenFileChooser {
      * 设置文件夹名称
      */
     public void setOpenCustomDirName(String dirName) {
-        mDirName = dirName;
+        if (mDirName != null && !mDirName.isEmpty() && mDirName.equals("")) {
+            mDirName = dirName;
+        }
     }
 
     private String getOpenCustomDirName() {
-        if (mDirName == null || mDirName.isEmpty() || mDirName.equals("")) {
-            mDirName = DEFAULT_FILE_NAME;
-        }
         return mDirName;
     }
 
@@ -56,9 +56,6 @@ public class OpenFileChooser {
     }
 
     private int getFileChooserRequestCode() {
-        if (mRequestCode == 0) {
-            mRequestCode = FILECHOOSER_REQUESTCODE;
-        }
         return mRequestCode;
     }
 
@@ -66,7 +63,9 @@ public class OpenFileChooser {
         return mCapturedImageURI;
     }
 
-
+    /**
+     * 设置ValueCallback Android 3.0+ 上使用此方法
+     */
     public void setValueCallbackUri(ValueCallback<Uri> valueCallback) {
         mUploadMessage = valueCallback;
     }
@@ -75,7 +74,9 @@ public class OpenFileChooser {
         return mUploadMessage;
     }
 
-
+    /**
+     * 设置ValueCallback Android <3.0 上使用此方法
+     */
     public void setValueCallbackUris(ValueCallback<Uri[]> valueCallback) {
         mUploadMessageL = valueCallback;
     }

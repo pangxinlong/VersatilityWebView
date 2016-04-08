@@ -1,7 +1,6 @@
 package com.example.activitystartmode.versatilitywebview.versatility;
 
 
-import com.example.activitystartmode.versatilitywebview.WebViewJsUtil;
 import com.example.activitystartmode.versatilitywebview.base.BaseWebSettings;
 import com.example.activitystartmode.versatilitywebview.base.BaseWebViewClient;
 import com.example.activitystartmode.versatilitywebview.base.WebViewDownload;

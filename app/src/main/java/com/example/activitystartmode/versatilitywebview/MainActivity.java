@@ -1,20 +1,17 @@
 package com.example.activitystartmode.versatilitywebview;
 
-import com.example.activitystartmode.versatilitywebview.base.BaseInterceptUrl;
-import com.example.activitystartmode.versatilitywebview.base.BaseWebViewClient;
 import com.example.activitystartmode.versatilitywebview.versatility.OpenFileChooser;
 import com.example.activitystartmode.versatilitywebview.versatility.VersatilityInterceptUrl;
 import com.example.activitystartmode.versatilitywebview.versatility.VersatilityWebChromeClient;
 import com.example.activitystartmode.versatilitywebview.versatility.VersatilityWebView;
 import com.example.activitystartmode.versatilitywebview.versatility.VersatilityWebViewClient;
+import com.example.activitystartmode.versatilitywebview.versatility.WebViewJsUtil;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.webkit.WebResourceError;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -51,8 +48,13 @@ public class MainActivity extends AppCompatActivity {
         webViewJsUtil = new WebViewJsUtil(mWebView);
         setClient();
         rootView.addView(mWebView);
+        testUrl();
+    }
+
+    private void testUrl() {
 //        mWebView.loadUrl("https://www.baidu.com");
-//        mWebView.loadUrl("http://test.youguu.com/mobile/fund/features/featered-second.html?id=3&type=2");//测试拦截url以及文件下载
+//        mWebView.loadUrl(
+//                "http://test.youguu.com/mobile/fund/features/featered-second.html?id=3&type=2");//测试拦截url以及文件下载
 //        mWebView.loadUrl("http://119.253.36.116/mobile/template/");//测试调用js方法
         mWebView.loadUrl("http://192.168.3.119:18080/start");//测试文件上传(注，此地址是本人服务器地址)
     }
@@ -82,11 +84,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void interceptUrl(String interceptType, WebView view, String url) {
                 if (interceptType.equals(needInterceptUrl.get(0))) {
-
+                        //业务逻辑
                 } else if (interceptType.equals(needInterceptUrl.get(1))) {
-
+                        //业务逻辑
                 } else if (interceptType.equals(needInterceptUrl.get(2))) {
-
+                        //业务逻辑
                 }
             }
         });
