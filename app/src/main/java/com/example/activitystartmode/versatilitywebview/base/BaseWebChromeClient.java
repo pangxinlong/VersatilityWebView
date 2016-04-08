@@ -11,20 +11,5 @@ import android.webkit.WebView;
  */
 public class BaseWebChromeClient extends WebChromeClient{
 
-//    public WebView mWebView;
-//
-//    public BaseWebChromeClient(WebView webView) {
-//        mWebView = webView;
-//    }
-//
-//    public void setWebClient(){
-//
-//    }
-//
-//    @Override
-//    public void onReceivedTitle(WebView view, String title) {
-//        super.onReceivedTitle(view, title);
-//    }
-
 
 }

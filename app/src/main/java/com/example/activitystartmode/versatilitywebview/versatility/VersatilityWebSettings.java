@@ -32,14 +32,13 @@ public class VersatilityWebSettings extends BaseWebSettings {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             mWebView.setWebContentsDebuggingEnabled(true);
         }
-        setDataBase();
-        setCache();
+
     }
 
     /**
      * 设置数据库
      */
-    private void setDataBase() {
+    public void setDataBase() {
         setDataBase("");
     }
 
@@ -61,7 +60,7 @@ public class VersatilityWebSettings extends BaseWebSettings {
      * 设置缓存
      */
 
-    private void setCache() {
+    public void setCache() {
         setCache(0, "");
     }
 

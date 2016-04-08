@@ -17,24 +17,7 @@ public class VersatilityWebJsCallBack extends BaseWebJsCallBack {
 
     public VersatilityWebJsCallBack(WebView webView) {
         super(webView);
-//        setJsInterface();
     }
-
-//    public VersatilityWebJsCallBack(WebView webView, Object baseWebJsInterface) {
-//        super(webView);
-//        setJsInterface(baseWebJsInterface);
-//    }
-//
-//    public VersatilityWebJsCallBack(WebView webView, String jsInterfaceName) {
-//        super(webView);
-//        setJsInterface(jsInterfaceName);
-//    }
-//
-//    public VersatilityWebJsCallBack(WebView webView, Object baseWebJsInterface,
-//            String jsInterfaceName) {
-//        super(webView);
-//        setJsInterface(baseWebJsInterface,jsInterfaceName);
-//    }
 
     /**
      * 设置js交互类

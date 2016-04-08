@@ -5,20 +5,16 @@ import android.webkit.WebView;
 
 /**
  * Created by pxl on 16-4-1.
- * Description TODO
+ * Description 调用JS工具类
  */
 public class WebViewJsUtil {
 
     private WebView mWebView;
 
-    private Context mContext;
 
-    public WebViewJsUtil(Context context, WebView webView) {
-        mContext = context;
+    public WebViewJsUtil(WebView webView) {
         mWebView = webView;
     }
-
-
 
     /**
      * java层调用js

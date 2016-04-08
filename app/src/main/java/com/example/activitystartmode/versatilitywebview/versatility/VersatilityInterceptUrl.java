@@ -8,6 +8,6 @@ import android.webkit.WebView;
  * Created by pxl on 16-4-7.
  * Description TODO
  */
-public interface VersatilityInterceptUrl extends BaseInterceptUrl {
-    void interceptYouguuUrl(WebView view, String url);
+public interface VersatilityInterceptUrl {
+    void interceptUrl(String interceptType,WebView view, String url);
 }
