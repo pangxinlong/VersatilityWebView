@@ -108,6 +108,7 @@ public class OpenFileChooser {
             final Intent captureIntent = new Intent(
                     MediaStore.ACTION_IMAGE_CAPTURE);
             captureIntent.putExtra(MediaStore.EXTRA_OUTPUT, mCapturedImageURI);
+
             Intent i = new Intent(Intent.ACTION_GET_CONTENT);
             i.addCategory(Intent.CATEGORY_OPENABLE);
             i.setType("image/*");
